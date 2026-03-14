@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Toys Wheel Picker</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<h1 class="title">🎡 Toys Lucky Wheel</h1>
+
+<div class="main">
+
+<div class="controls">
+
+<h3>Enter Names</h3>
+
+<textarea id="entries" placeholder="One name per line"></textarea>
+
+<div class="buttons">
+<button class="generate" onclick="generateWheel()">Create Wheel</button>
+<button class="spin" onclick="spin()">Spin</button>
+<button onclick="shuffleEntries()">Shuffle</button>
+<button onclick="resetWheel()">Reset</button>
+</div>
+
+</div>
+
+<div class="wheel-section">
+
+<div class="pointer"></div>
+<canvas id="wheel" width="500" height="500"></canvas>
+
+</div>
+
+</div>
+
+<h2 id="result"></h2>
+
+<div id="confetti"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
