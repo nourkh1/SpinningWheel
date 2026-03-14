@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Wheel Options</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="title">Set Wheel Options</h1>
+
+  <div class="controls">
+    <label for="entries">Enter options (one per line):</label>
+    <textarea id="entries" placeholder="Option 1&#10;Option 2&#10;Option 3"></textarea>
+
+    <div class="buttons">
+      <button class="generate" onclick="saveOptions()">Save & Go to Wheel</button>
+      <button onclick="resetWheel()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    function saveOptions() {
+      const entries = document.getElementById('entries')
+        .value
+        .split('\n')
+        .filter(x => x.trim() != '');
+      if(entries.length === 0){
+        alert("Please enter at least one option!");
+        return;
+      }
+      localStorage.setItem('toysWheel', JSON.stringify(entries));
+      window.location.href = 'wheel.html';
+    }
+
+    function resetWheel() {
+      document.getElementById('entries').value = '';
+      localStorage.removeItem('toysWheel');
+    }
+
+    // Load saved options if exist
+    window.onload = function() {
+      const saved = localStorage.getItem('toysWheel');
+      if(saved){
+        document.getElementById('entries').value = JSON.parse(saved).join("\n");
+      }
+    }
+  </script>
+</body>
+</html>
